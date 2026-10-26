@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microsoft Word — 20 ta laboratoriya topshirig‘i</title>
+<style>
+  :root { --ink:#172033; --muted:#5d687c; --line:#dce3ee; --bg:#f4f7fb; --card:#fff; --accent:#2457c5; --soft:#eaf0ff; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:Arial,Helvetica,sans-serif; color:var(--ink); background:var(--bg); line-height:1.6; }
+  header { background:linear-gradient(135deg,#173b83,#2876c7); color:#fff; padding:38px 20px; }
+  .wrap { width:min(1050px,calc(100% - 32px)); margin:auto; }
+  h1 { margin:0 0 10px; font-size:clamp(25px,4vw,38px); line-height:1.2; }
+  header p { margin:8px 0 0; max-width:800px; color:#e7efff; }
+  main { padding:24px 0 48px; }
+  .panel { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px; margin-bottom:20px; box-shadow:0 4px 16px #19345b0a; }
+  h2 { margin:0 0 12px; font-size:22px; }
+  h3 { margin:0 0 8px; font-size:18px; }
+  .note { color:var(--muted); }
+  .requirements { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+  .requirement { background:#f8faff; border:1px solid var(--line); border-radius:10px; padding:14px; }
+  .requirement strong { display:block; margin-bottom:5px; }
+  .task { background:var(--card); border:1px solid var(--line); border-radius:12px; margin:10px 0; overflow:hidden; }
+  .task summary { cursor:pointer; padding:16px 18px; font-weight:700; list-style:none; display:flex; gap:12px; align-items:flex-start; }
+  .task summary::-webkit-details-marker { display:none; }
+  .task summary::after { content:"＋"; margin-left:auto; color:var(--accent); font-size:20px; }
+  .task[open] summary::after { content:"−"; }
+  .num { background:var(--soft); color:var(--accent); min-width:34px; height:34px; border-radius:9px; display:inline-flex; justify-content:center; align-items:center; }
+  .taskbody { padding:0 20px 20px 64px; }
+  .taskbody p { margin-top:0; }
+  li { margin:6px 0; }
+  code { background:#eef2f8; padding:2px 5px; border-radius:4px; font-family:Consolas,monospace; }
+  table { border-collapse:collapse; width:100%; margin:10px 0; }
+  th,td { border:1px solid var(--line); padding:10px; text-align:left; vertical-align:top; }
+  th { background:#edf3ff; }
+  .toolbar { display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+  button { border:0; border-radius:8px; padding:10px 14px; cursor:pointer; font-weight:700; background:var(--accent); color:white; }
+  button.secondary { background:#e8edf6; color:var(--ink); }
+  footer { text-align:center; padding:20px; color:var(--muted); font-size:14px; }
+  @media(max-width:600px) { .taskbody { padding:0 16px 18px; } .task summary { padding:13px; } }
+  @media print { body { background:#fff; } header { background:#fff; color:#000; padding:10px 0; } header p { color:#333; } .panel,.task { box-shadow:none; break-inside:avoid; } .toolbar { display:none; } .task:not([open]) .taskbody { display:block; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    
+    <p><strong>Mavzu:</strong> Jadvallar, giperhavolalar, kolontitullar va sahifa raqamlari bilan ishlash.</p>
+  
+  </div>
+</header>
+<main class="wrap">
+  <section class="panel">
+    <h2>Barcha topshiriqlar uchun majburiy talablar</h2>
+    <p class="note">Har bir talaba quyidagi talablarning barchasini o‘z mavzusidagi hujjatda bajarishi shart.</p>
+    <div class="requirements">
+      <div class="requirement"><strong>1. Jadvallar</strong>Kamida 2 ta jadval yarating. Birinchi jadval kamida 5 ustun va 6 qator, ikkinchisi kamida 4 ustun va 5 qator bo‘lsin. Sarlavhalarni formatlang, chegaralarni belgilang va kamida bir marta kataklarni birlashtirish yoki ajratishdan foydalaning.</div>
+      <div class="requirement"><strong>2. Giperhavolalar</strong>Kamida 3 ta tashqi veb-saytga havola va hujjat ichidagi bo‘limlarga o‘tish uchun kamida 2 ta ichki havola yarating.</div>
+      <div class="requirement"><strong>3. Kolontitullar</strong>Yuqori kolontitulga tashkilot yoki hujjat nomini, pastki kolontitulga talabaning F.I.Sh. yoki hujjat versiyasini kiriting. Ularni asosiy matndan chiziq yoki format bilan ajrating.</div>
+      <div class="requirement"><strong>4. Sahifa raqamlari</strong>Sahifalarni pastki kolontitulda raqamlang. Birinchi sahifada raqamni yashiring, keyingi sahifalarda raqamlash davom etishini tekshiring.</div>
+    </div>
+    <div class="toolbar">
+      <button onclick="document.querySelectorAll('details.task').forEach(x=>x.open=true)">Barchasini ochish</button>
+      <button class="secondary" onclick="document.querySelectorAll('details.task').forEach(x=>x.open=false)">Barchasini yopish</button>
+      <button class="secondary" onclick="window.print()">Chop etish</button>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>20 ta individual topshiriq</h2>
+    <p class="note">Topshiriqni ochish uchun uning sarlavhasini bosing.</p>
+    <div id="tasks"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Word menyulari (rus tilida)</h2>
+    <table>
+      <thead><tr><th>Vazifa</th><th>Ruscha menyu</th></tr></thead>
+      <tbody>
+        <tr><td>Jadval yaratish</td><td><code>Вставка → Таблица</code></td></tr>
+        <tr><td>Kataklarni birlashtirish</td><td><code>Макет таблицы → Объединить ячейки</code></td></tr>
+        <tr><td>Kataklarni ajratish</td><td><code>Макет таблицы → Разделить ячейки</code></td></tr>
+        <tr><td>Jadval chegaralari va foni</td><td><code>Конструктор таблиц → Границы / Заливка</code></td></tr>
+        <tr><td>Tashqi giperhavola qo‘shish</td><td><code>Вставка → Ссылка</code> yoki <code>Ctrl + K</code></td></tr>
+        <tr><td>Sarlavhaga uslub berish</td><td><code>Главная → Стили → Заголовок 1</code></td></tr>
+        <tr><td>Xatcho‘p yaratish</td><td><code>Вставка → Закладка</code></td></tr>
+        <tr><td>Hujjat ichidagi bo‘limga havola</td><td><code>Вставка → Ссылка → Место в документе</code></td></tr>
+        <tr><td>Yuqori kolontitul</td><td><code>Вставка → Верхний колонтитул</code></td></tr>
+        <tr><td>Pastki kolontitul</td><td><code>Вставка → Нижний колонтитул</code></td></tr>
+        <tr><td>Sahifa raqami</td><td><code>Вставка → Номер страницы</code></td></tr>
+        <tr><td>Birinchi sahifada raqamni yashirish</td><td><code>Конструктор колонтитулов → Особый колонтитул для первой страницы</code></td></tr>
+        <tr><td>Chop etishdan oldin ko‘rish</td><td><code>Файл → Печать</code></td></tr>
+      </tbody>
+    </table>
+    <p><strong>Eslatma:</strong> Word versiyasiga qarab ayrim menyu nomlari yoki joylashuvi biroz farq qilishi mumkin.</p>
+  </section>
+
+  <section class="panel">
+    <h2>Baholash mezonlari</h2>
+    <table>
+      <thead><tr><th>Ko‘rsatkich</th><th>Ball</th></tr></thead>
+      <tbody>
+        <tr><td>Jadvallar yaratish va formatlash</td><td>2</td></tr>
+        <tr><td>Tashqi va ichki giperhavolalar</td><td>2</td></tr>
+        <tr><td>Yuqori va pastki kolontitullar</td><td>2</td></tr>
+        <tr><td>Sahifalarni to‘g‘ri raqamlash</td><td>2</td></tr>
+        <tr><td>Hujjat tuzilishi, dizayni va chop etishga tayyorligi</td><td>2</td></tr>
+        <tr><th>Jami</th><th>10</th></tr>
+      </tbody>
+    </table>
+    <h3>Yakuniy topshirish talablari</h3>
+    <ul>
+      <li>Hujjat kamida 3–4 sahifadan iborat bo‘lsin.</li>
+      <li>Faylni <code>.docx</code> formatida saqlang.</li>
+      <li>Har bir tashqi va ichki havolani bosib tekshiring.</li>
+      <li>Chop etishdan oldin sahifa raqamlari va kolontitullarni tekshiring.</li>
+    </ul>
+  </section>
+</main>
+<footer>Microsoft Word laboratoriya mashg‘uloti • 20 ta individual topshiriq</footer>
+<script>
+const tasks = [
+{title:"Universitet talabalarining o‘zlashtirishini nazorat qilish tizimi",desc:"Universitetdagi 10 nafar talabaning fanlar bo‘yicha baholari va davomatini aks ettiruvchi hisobot tayyorlang.",items:["Talabalar ro‘yxati va baholar jadvalini yarating.","Fanlar bo‘yicha o‘rtacha natijalar jadvalini tuzing.","Kirish, talabalar ro‘yxati va natijalar bo‘limlariga ichki havolalar yarating.","Universitet sayti va ta’limga oid ikki manbaga tashqi havolalar kiriting."]},
+{title:"Onlayn do‘kon mahsulotlarini boshqarish",desc:"Elektron savdo do‘koni uchun mahsulotlar katalogi va narxlar hisobotini yarating.",items:["Kamida 10 ta mahsulot nomi, kodi, narxi, soni va kategoriyasini jadvalga kiriting.","Mahsulot kategoriyalari bo‘yicha alohida jadval yarating.","Mahsulot ishlab chiqaruvchilari yoki rasmiy do‘konlar saytlariga havola qo‘shing.","Katalog ichida kategoriyalar va narxlar bo‘limlari orasida ichki havolalar yarating."]},
+{title:"Kutubxona kitoblari va elektron resurslar katalogi",desc:"Ta’lim muassasasi kutubxonasi uchun kitoblarni ro‘yxatga olish va foydalanish qo‘llanmasini tayyorlang.",items:["Kamida 10 ta kitobning nomi, muallifi, yili, turi va inventar raqamini jadvalga joylang.","Kitoblarni fan yo‘nalishlari bo‘yicha tasniflovchi ikkinchi jadval tuzing.","Elektron kutubxona va ilmiy manbalarga tashqi havolalar qo‘shing.","Katalogdan foydalanish, qidirish va kitob olish bo‘limlariga ichki havolalar yarating."]},
+{title:"Xodimlar ish haqi va ish vaqti hisoboti",desc:"Shartli korxona xodimlarining ish kunlari, ishlagan soatlari va ish haqi hisobini yurituvchi hujjat tayyorlang.",items:["10 nafar xodim uchun lavozim, ish kunlari, stavka va hisoblangan ish haqi jadvalini tuzing.","Bo‘limlar bo‘yicha ish haqi xarajatlari jadvalini yarating.","Mehnat qonunchiligi va rasmiy tashkilot saytlariga havolalar qo‘shing.","Xodimlar ro‘yxati va hisoblash qoidalari bo‘limlarini ichki havolalar bilan bog‘lang."]},
+{title:"Mehmonxona xonalarini bron qilish tizimi",desc:"Mehmonxona uchun xonalar, mijozlar va bron holatlari haqida ma’lumotnoma yarating.",items:["Xona raqami, turi, sig‘imi, narxi va holati ko‘rsatilgan jadval tuzing.","Mijozlar va bron sanalarini aks ettiruvchi ikkinchi jadval yarating.","Shahar turizm portali va diqqatga sazovor joylar saytlariga havola qo‘shing.","Xonalar, narxlar va bron qilish tartibi bo‘limlariga ichki havolalar yarating."]},
+{title:"Tibbiyot markazida qabul jadvali",desc:"Shartli tibbiyot markazining shifokorlari va qabul vaqtlarini tashkil etish uchun ma’lumotnoma yarating.",items:["Shifokor, mutaxassislik, ish kuni, qabul vaqti va xona raqami ko‘rsatilgan jadval tuzing.","Xizmatlar va qabul narxlari jadvalini yarating.","Tibbiyot markazi hamda ishonchli sog‘liqni saqlash resurslariga tashqi havolalar qo‘shing.","Shifokorlar ro‘yxati va xizmatlar bo‘limlari orasida ichki havolalar yarating."]},
+{title:"Korxona omboridagi mahsulotlar hisoboti",desc:"Ombordagi mahsulotlar kirimi, chiqimi va qoldiqlarini nazorat qilish hujjatini tayyorlang.",items:["Mahsulot kodi, nomi, boshlang‘ich qoldiq, kirim, chiqim va yakuniy qoldiq jadvalini tuzing.","Mahsulot harakatlari sanasi, hujjat raqami va mas’ul xodim ko‘rsatilgan jadval yarating.","Yetkazib beruvchilar saytlariga tashqi havolalar qo‘shing.","Ombor kirimi, chiqimi va inventarizatsiya bo‘limlarini ichki havolalar bilan bog‘lang."]},
+{title:"Sayohat agentligi turistik paketlari",desc:"Sayohat agentligi uchun turistik yo‘nalishlar, xizmatlar va xarajatlar haqida katalog tayyorlang.",items:["Kamida 8 ta yo‘nalish bo‘yicha mamlakat, muddat, transport, narx va xizmatlar jadvalini yarating.","Safar kunlari va xarajatlar taqsimoti uchun ikkinchi jadval tuzing.","Turistik manzillarning rasmiy saytlari va xarita xizmatlariga havolalar qo‘shing.","Yo‘nalishlar va xarajatlar bo‘limlari orasida ichki havolalar yarating."]},
+{title:"Talabalar uchun stipendiya tanlovlari",desc:"Stipendiya va grantlar haqida ma’lumot beruvchi qo‘llanma tayyorlang.",items:["Grant nomi, talablar, miqdor, muddat va hujjatlar ko‘rsatilgan jadval tuzing.","Nomzodlarni baholash mezonlari jadvalini yarating.","Universitetlar va grant tashkilotlarining rasmiy saytlariga havola qo‘shing.","Grantlar ro‘yxati va ariza topshirish tartibiga ichki havolalar yarating."]},
+{title:"Loyiha boshqaruvi va vazifalar nazorati",desc:"Dasturiy ta’minot yaratish loyihasi uchun vazifalar, muddatlar va ijrochilar hisobotini ishlab chiqing.",items:["Vazifa, ijrochi, boshlanish sanasi, tugash sanasi, ustuvorlik va holat jadvalini tuzing.","Xatarlar va ularni kamaytirish choralari jadvalini yarating.","Loyiha boshqaruvi vositalarining rasmiy saytlariga havolalar qo‘shing.","Vazifalar, muddatlar va xatarlar bo‘limlari orasida ichki havolalar yarating."]},
+{title:"Bank xizmatlari va kreditlarni taqqoslash",desc:"Shartli mijoz uchun bank xizmatlari va kredit takliflarini solishtiruvchi ma’lumotnoma tayyorlang.",items:["Bank nomi, kredit turi, foiz stavkasi, muddati va talablarini ko‘rsatuvchi jadval tuzing.","Kredit summasi va to‘lov muddatlari bo‘yicha namunaviy taqqoslash jadvali yarating.","Banklarning rasmiy veb-saytlariga tashqi havolalar qo‘shing.","Kredit turlari va taqqoslash mezonlari bo‘limlarini ichki havolalar bilan bog‘lang."]},
+{title:"Kompyuter texnikalarini inventarizatsiya qilish",desc:"Tashkilotdagi kompyuterlar, monitorlar va boshqa qurilmalar hisobini yuritish hujjatini yarating.",items:["Inventar raqami, qurilma nomi, modeli, sotib olingan sana va holati jadvalini tuzing.","Qurilmalar biriktirilgan xodimlar va bo‘limlar jadvalini yarating.","Ishlab chiqaruvchilarning rasmiy texnik yordam sahifalariga havolalar qo‘shing.","Qurilmalar ro‘yxati va texnik xizmat ko‘rsatish bo‘limlariga ichki havolalar yarating."]},
+{title:"Konferensiya va seminar ishtirokchilari",desc:"Ilmiy konferensiya ishtirokchilari, ma’ruzalari va tadbir dasturini rasmiylashtiring.",items:["Ishtirokchi, tashkilot, ma’ruza mavzusi, vaqt va ishtirok turi jadvalini tuzing.","Konferensiya dasturining vaqtlar bo‘yicha ikkinchi jadvalini yarating.","Konferensiya tashkilotchisi va ilmiy platformalarga havolalar qo‘shing.","Dastur, ishtirokchilar va ma’ruzalar bo‘limlarini ichki havolalar bilan bog‘lang."]},
+{title:"Elektron ta’lim kurslari katalogi",desc:"Talabalar uchun onlayn kurslar, davomiylik va o‘quv natijalari haqida qo‘llanma tayyorlang.",items:["Kurs nomi, platforma, davomiylik, daraja va sertifikat mavjudligi jadvalini tuzing.","Kurs modullari va o‘quv natijalari jadvalini yarating.","Kurs platformalarining rasmiy sahifalariga tashqi havolalar qo‘shing.","Kurslar ro‘yxati va modullar bo‘limlari orasida ichki havolalar yarating."]},
+{title:"Restoran menyusi va buyurtmalar hisobi",desc:"Restoran uchun taomlar katalogi, narxlar va buyurtmalarni qayd etish hujjatini yarating.",items:["Taom nomi, turi, porsiya, narxi va tayyorlanish vaqti jadvalini tuzing.","Buyurtma raqami, taom, miqdor, narx va holat jadvalini yarating.","Yetkazib berish xizmati va oziq-ovqat xavfsizligi bo‘yicha rasmiy saytlarga havolalar qo‘shing.","Menyu va buyurtmalar bo‘limlari orasida ichki havolalar yarating."]},
+{title:"Ishga qabul qilish va nomzodlarni baholash",desc:"Tashkilotning ishga qabul qilish jarayoni uchun nomzodlar va suhbat natijalari hujjatini tayyorlang.",items:["Nomzod, lavozim, tajriba, suhbat sanasi va holati ko‘rsatilgan jadval tuzing.","Baholash mezonlari va natijalari uchun ikkinchi jadval yarating.","Tashkilot sayti va kasbiy rivojlanish platformalariga havolalar qo‘shing.","Vakansiyalar va suhbat mezonlari bo‘limlariga ichki havolalar yarating."]},
+{title:"Elektr energiyasi sarfi hisoboti",desc:"Shartli tashkilotning oylik elektr energiyasi iste’moli va xarajatlarini tahlil qiluvchi hujjat tayyorlang.",items:["Oy, hisoblagich ko‘rsatkichi, sarf, tarif va xarajat jadvalini tuzing.","Bo‘limlar kesimida elektr energiyasi sarfi jadvalini yarating.","Energetika bo‘yicha rasmiy tashkilotlar saytlariga havolalar qo‘shing.","Oylik sarf va tejash tavsiyalari bo‘limlarini ichki havolalar bilan bog‘lang."]},
+{title:"Kichik biznesning daromad va xarajatlar hisoboti",desc:"Kichik korxonaning daromadlari, xarajatlari va moliyaviy natijalari bo‘yicha hisobot tayyorlang.",items:["Daromad manbai, sana, summa va izoh jadvalini tuzing.","Xarajat turi, rejalashtirilgan summa, haqiqiy summa va farq jadvalini yarating.","Soliq va buxgalteriya hisobining rasmiy manbalariga havolalar qo‘shing.","Daromadlar, xarajatlar va xulosa bo‘limlariga ichki havolalar yarating."]},
+{title:"Universitet laboratoriya jihozlari hisobi",desc:"O‘quv laboratoriyasidagi jihozlar, ularning holati va foydalanish tartibi haqida hujjat yarating.",items:["Jihoz nomi, inventar raqami, soni, holati va mas’ul shaxs jadvalini tuzing.","Jihozlardan foydalanish qoidalari va texnik ko‘rik sanalari jadvalini yarating.","Ishlab chiqaruvchilarning yo‘riqnomalari va rasmiy saytlariga havolalar qo‘shing.","Jihozlar ro‘yxati va foydalanish qoidalari bo‘limlarini ichki havolalar bilan bog‘lang."]},
+{title:"Shahar transporti yo‘nalishlari ma’lumotnomasi",desc:"Shartli shahar transporti yo‘nalishlari, bekatlar va qatnov vaqtlarini aks ettiruvchi hujjat tayyorlang.",items:["Yo‘nalish raqami, boshlang‘ich bekat, oxirgi bekat, qatnov oralig‘i va ish vaqti jadvalini tuzing.","Bekatlar ketma-ketligi va taxminiy vaqtlar jadvalini yarating.","Shahar transporti va xarita xizmatlarining rasmiy sahifalariga havolalar qo‘shing.","Yo‘nalishlar va bekatlar bo‘limlarini ichki havolalar bilan bog‘lang."]}
+];
+const root = document.getElementById('tasks');
+tasks.forEach((task, index) => {
+  const details = document.createElement('details');
+  details.className = 'task';
+  const summary = document.createElement('summary');
+  const num = document.createElement('span');
+  num.className = 'num';
+  num.textContent = index + 1;
+  const title = document.createElement('span');
+  title.textContent = task.title;
+  summary.append(num, title);
+  const body = document.createElement('div');
+  body.className = 'taskbody';
+  const desc = document.createElement('p');
+  desc.textContent = task.desc;
+  const heading = document.createElement('h3');
+  heading.textContent = 'Bajariladigan ishlar';
+  const list = document.createElement('ol');
+  task.items.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = item;
+    list.appendChild(li);
+  });
+  const note = document.createElement('p');
+  note.className = 'note';
+  note.textContent = 'Eslatma: ushbu topshiriqda ham barcha majburiy talablar bajarilishi kerak: 2 ta jadval, 3 ta tashqi va 2 ta ichki giperhavola, yuqori/pastki kolontitul hamda sahifa raqamlari.';
+  body.append(desc, heading, list, note);
+  details.append(summary, body);
+  root.appendChild(details);
+});
+</script>
+</body>
+</html>
